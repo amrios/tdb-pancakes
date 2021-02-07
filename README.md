@@ -1,10 +1,9 @@
 # tdb-pancakes
 
-Auto-responder for Pancake bot written in Python 3. In progress.
+Auto-responder for Pancake bot written in Python 3.
 
 ## Dependencies
 
-* lxml
 * html
 * bs4
 * requests
@@ -43,11 +42,28 @@ Currently, the indexer only stores the ID, question, and correct answer.
 
 ### Bot
 
-The bot hasn't been worked on yet.
+Current scripts for the bot are tdb_trivia and tdb_daily. They are meant to
+be run through cron. You'll have to get your user token and channel ID through
+Discord. Look up online to get these two piece of information, later versions
+might address this.
+
+* tdb_trivia automatically answers the trivia questions. You'll need to populate
+your database first in order to use it. The script is barebones at the moment
+and needs to be improved, but it works if the question is in the DB and the bot
+gives out the right reply.
+
+* tdb_daily is very simple, just say p!daily at the selected channel.
 
 Rapptz Discord.py is used for interacting with Discord. The responder
 is able to automatically send work, highlow, trivia, and deposit commands
 to the bot. See disclaimer for important notice.
+
+## TODO
+
+Core functionality is finished, but the following still needs to be addressed
+
+* Exception handling
+* Code clean-up/readability
 
 ## Disclaimer
 
