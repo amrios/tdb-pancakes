@@ -45,13 +45,13 @@ class DailyMod(discord.Client):
 
             if answer is None:  # Lookup failed
                 print("Question recieved isn't indexed")
-                await self.client.logout()
+                await self.logout()
                 return
 
             for i in range(1, 5):
                 if answer in body[i + 1]:
                     await self.channel.send(str(i))
-                    await self.client.logout()
+                    await self.logout()
                     return
 
             print("Answer couldn't be found, maybe it's not indexed?")

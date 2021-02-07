@@ -2,6 +2,8 @@
 
 Auto-responder for Pancake bot written in Python 3.
 
+![](example.gif)
+
 ## Dependencies
 
 * html
