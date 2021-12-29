@@ -4,6 +4,10 @@ Auto-responder for Pancake bot written in Python 3.
 
 ![](example.gif)
 
+# Deprecation notice!
+
+This project was a quick turn-around project. One of the libraries this project uses, Discord.py, has been discontinued. I'm not too interested in maintaining this project even from its beginning. Therefore, this project will no longer be updated to ensure that it works with Discord.
+
 ## Dependencies
 
 * html
@@ -13,28 +17,26 @@ Auto-responder for Pancake bot written in Python 3.
 
 ## Components
 
-tdb-pancakes consists of two separate components, one to keep a local
-database of the questions and answers (scrapper), and the other to
-interact with Discord
+tdb-pancakes consists of two separate components, the Q/A scrapper and the Discord interactor.
 
 ### Scrapper/Indexer
 
-OpenTDB provides an API, although it is only able to get a random set
-of questions and answers. This means we can't just simply query the API
+The Pancake bot uses OpenTDB to obtain its list of questions and answers (Q/A).
+While OpenTDB provides an API to retrieve Q/A, it is limited to only obtain a random
+set from what is available in its entire DB. This means we can't just simply query the API
 for a specific question and retrieve the answer.
 
-To solve this, a scrapper is needed to record the question and answer
-for each question. Our scrapper will query the API to retrieve the random
-set of questions, and check if it already exists in the database. If it
-doesn't, it will create a row with the question and answer.
+To solve this, a scrapper is needed to record every Q/A. The current implementation provides a
+solution, by querying the API to get these random Q/A and checking it if it already exists in 
+the database. If it doesn't, it will create a new entry.
 
-In addition, the script also gets the question ID. The API also doesn't
-provide this, so another workaround is needed. For this, we use a user-facing
-webform from OpenTDB's website to provide us with the ID.
+In addition, we are also able to obtain the question ID through other methods; the API also doesn't
+provide the ID, but the frontend does. The current implementation is able to retrieve the ID by using
+the search feature in the frontend and entering it into the DB.
 
-Note that the scrapper is considerate with OpenTDB and delays each request.
-Currently, the indexer only stores the ID, question, and correct answer. By
-default, it only stores the hard questions.
+Note that the scrapper is considerate and delays each request.
+Currently, the indexer only stores the ID, question, and correct answer of hard
+questions.
 
 ### Bot
 
@@ -43,7 +45,7 @@ their respective command. You'll have to get your user token and channel ID thro
 Discord in order to set it up. Look up online to see how to obtain these two
 pieces of information.
 
-Note that the scripts are one-pass only. If you want automated use, you should
+Note that the files do not execute automatically. If you want automated use, you should
 use your OS task scheduler (i.e. cron) to set up automated use.
 
 * tdb_trivia automatically answers the trivia questions. You'll need to populate
